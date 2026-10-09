@@ -22,3 +22,11 @@
 - Controle na de upload nog niet geslaagd: het oude adres 10.195.248.80 reageert niet; de discovery-scan vindt geen statuspagina en de wifi-scan ziet alleen de hotspot. Oorzaak nog onbekend. Nieuwe versie en PWM-uitgangen zijn nog niet op het apparaat bevestigd.
 - Geen elektrische meting, fysieke motorproef of werkende noodstop op bewegend rad aangetoond. De webknop onderbreekt de 12 V-motorvoeding niet.
 - Voeding en bedrading zijn door Tom bevestigd: 12 V motorzijde, buckconverter circa 5,0 V naar Wemos 5V en driverlogica, gemeenschappelijke massa. Ingangsbuffer en 3,3 V-compatibiliteit onbevestigd.
+- Vervolgcontrole met expliciete toestemming: `Rad-Wemos` werd later weer zichtbaar; Windows kon ermee verbinden. Drie HTTP GET-pogingen naar `192.168.4.1/api/status` leverden geen status op. Daarna is automatisch terugverbonden met de Galaxy-hotspot. Geen nieuwe upload of motorcommando uitgevoerd. Oorzaak nog onbekend; een herstart is aan Tom voorgesteld.
+
+## GitHub
+
+- Project toegevoegd aan `https://github.com/tomvonckenn-crypto/Rad` op `main`, met behoud van de bestaande eerste commit.
+- Eerste projectcommit: `af8a55f`; lokale HEAD en remote `main` kwamen na de push overeen.
+- Wifiheader, firmware/buildbestanden, lokale logs en Python-omgeving zijn uitgesloten. De klaargezette bronbestanden zijn gecontroleerd op de lokaal opgeslagen wifi-sleutel; die is niet gevonden.
+- Werkafspraak: na grote goedgekeurde wijzigingen relevante controles uitvoeren, committen en opnieuw pushen; zie `AGENTS.md`.
