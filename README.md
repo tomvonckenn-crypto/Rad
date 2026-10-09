@@ -96,6 +96,8 @@ Automatisch draaien en Hall-sensoren zijn nog niet toegevoegd. PWM begrenst het 
 
 Zie `STATUS.md` voor de werkelijk uitgevoerde builds, uploads en hardwarecontroles. Een geslaagde build is geen bewijs van een geslaagde upload of werkende motor.
 
+Versie 0.2.0 is na een handmatige Wemos-reset via de hotspot bevestigd: de bedieningspagina wordt geleverd en de controller meldt vergrendeld met beide PWM-uitgangen op 0. Direct na de laatste OTA reageerde de webserver niet; de oorzaak is nog onbekend. Motorbeweging en het werkelijke stopgedrag zijn nog niet getest.
+
 `src/motor_checks.cpp` laat de compiler de echte controllerlogica uitvoeren met `static_assert`: opstarten, ramp en limiet, volledige versnelling/vertraging, stopvergrendeling, verplichte nieuwe stilstandbevestiging, heartbeat-verloop inclusief timer-overloop en permanente OTA-fout. `tests/ui-checks.js` toetst het echte paginascript met gesimuleerde DOM/API-antwoorden, waaronder vertraagde antwoorden na een stop en verbindingsherstel. Er wordt hierbij geen motor aangestuurd. Met Node kan deze test ook via `node tests/ui-checks.js` draaien. `scripts/Preview-Controls.py` is uitsluitend een lokale UI-fixture op 127.0.0.1:8765 en maakt geen verbinding met de Wemos.
 
 Bronnen: [ESP8266 OTA](https://arduino-esp8266.readthedocs.io/en/latest/ota_updates/readme.html), [station en access point](https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html), [PlatformIO D1 mini](https://docs.platformio.org/en/latest/boards/espressif8266/d1_mini.html).

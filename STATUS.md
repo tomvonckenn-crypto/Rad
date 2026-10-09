@@ -19,10 +19,13 @@
 - Laatste build geslaagd: RAM 30004 bytes (36,6%), flash 348027 bytes (33,3%). Zeven compile-time controles van de echte motorcontroller slagen, inclusief stopvergrendeling, heartbeat-timeout, timer-overloop en volledige PWM-rampen.
 - Negen controles van het echte paginascript met gesimuleerde DOM/API-antwoorden geslaagd. Geen echte browserweergave gecontroleerd: er was geen browser beschikbaar in de automatiseringsomgeving.
 - OTA-overdracht via de gewone hotspot geslaagd volgens de uploader; Windows bleef op Galaxy A37 5G 9FCD.
-- Controle na de upload nog niet geslaagd: het oude adres 10.195.248.80 reageert niet; de discovery-scan vindt geen statuspagina en de wifi-scan ziet alleen de hotspot. Oorzaak nog onbekend. Nieuwe versie en PWM-uitgangen zijn nog niet op het apparaat bevestigd.
+- Eerste controle na de upload niet geslaagd: het oude adres 10.195.248.80 reageerde niet; de discovery-scan vond geen statuspagina en de wifi-scan zag alleen de hotspot. Op dat moment waren de nieuwe versie en PWM-uitgangen nog niet op het apparaat bevestigd.
 - Geen elektrische meting, fysieke motorproef of werkende noodstop op bewegend rad aangetoond. De webknop onderbreekt de 12 V-motorvoeding niet.
 - Voeding en bedrading zijn door Tom bevestigd: 12 V motorzijde, buckconverter circa 5,0 V naar Wemos 5V en driverlogica, gemeenschappelijke massa. Ingangsbuffer en 3,3 V-compatibiliteit onbevestigd.
 - Vervolgcontrole met expliciete toestemming: `Rad-Wemos` werd later weer zichtbaar; Windows kon ermee verbinden. Drie HTTP GET-pogingen naar `192.168.4.1/api/status` leverden geen status op. Daarna is automatisch terugverbonden met de Galaxy-hotspot. Geen nieuwe upload of motorcommando uitgevoerd. Oorzaak nog onbekend; een herstart is aan Tom voorgesteld.
+- Tom heeft vervolgens de Wemos gereset. Discovery vindt nu `http://10.195.248.80/` op de hotspot. `/api/status` bevestigt `0.2.0-handmatig`, build `Oct 9 2026 21:21:30`, `state=locked`, `control_armed=false`, `ota_busy=false`, `ota_failed=false` en target/actual/RPWM/LPWM allemaal 0.
+- De bedieningspagina levert HTTP 200 en 9244 bytes en komt exact overeen met `include/control_page.h`, inclusief de NOODSTOP-knop. Een volgende statusaanvraag bevestigt dezelfde vergrendeling bij uptime 90233 ms. Windows bleef op de Galaxy-hotspot. Uitsluitend HTTP GET gebruikt; bediening en softwarestop zijn nog niet op de hardware beproefd.
+- Oorzaak van het uitblijven van bereikbaarheid direct na deze OTA is nog niet vastgesteld. De handmatige reset herstelde de verbinding; dit bewijst nog geen betrouwbaar automatisch herstel bij elke toekomstige upload.
 
 ## GitHub
 
