@@ -1,0 +1,5 @@
+.venv/
+.pio/
+include/wifi_secrets.h
+.local/
+__pycache__/

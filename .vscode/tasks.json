@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Rad: bouwen",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-m", "platformio", "run", "-e", "rad"],
+      "group": {"kind": "build", "isDefault": true},
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Rad: upload via gewone wifi",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/Upload.ps1", "-Address", "${input:radIp}"],
+      "problemMatcher": ["$gcc"]
+    }
+  ],
+  "inputs": [{"id":"radIp","type":"promptString","description":"IP-adres Wemos (of rad-wemos.local)","default":"rad-wemos.local"}]
+}
